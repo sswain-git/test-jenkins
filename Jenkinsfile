@@ -2,7 +2,7 @@
 
 pipeline {
 
-    agent { node { label 'dockerized' } }
+    agent any
 
     environment {
         INSTANCE_NAME = "${BRANCH_NAME}-${BUILD_ID}".toLowerCase()
