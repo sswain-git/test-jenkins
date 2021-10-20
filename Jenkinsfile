@@ -16,18 +16,12 @@ pipeline {
         ECR                   = "846866821192.dkr.ecr.us-east-1.amazonaws.com"
     }
 
-    options {
-       timeout(time: 1, unit: 'HOURS') 
-       timestamps()
-       buildDiscarder(logRotator(daysToKeepStr: '90', numToKeepStr: '10'))
-       ansiColor('xterm')
-       disableConcurrentBuilds()
-    }
+    
  
     stages {
         stage('Docker Creds') {
             steps {
-                sh(script: "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR")
+                echo '>>> Build Application .'
             }
         }
 
