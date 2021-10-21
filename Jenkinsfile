@@ -4,13 +4,16 @@ pipeline {
 
     agent any
 
-    
+    environment {
+    PATH = "/usr/local/bin/:${env.PATH}"
+  }
     
  
     stages {
         stage('Docker Creds') {
             steps {
                 echo '>>> Build Application .'
+                echo "PATH is: ${env.PATH}"
             }
         }
 
